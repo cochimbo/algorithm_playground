@@ -1,3 +1,6 @@
+"""
+Class for static definitions
+"""
 class Definitions:
     CONST_N_LETTERS_TILDE = 5
     CONST_N_LETTERS_ENYE = 1
@@ -6,8 +9,12 @@ class Definitions:
         CONST_N_LETTERS_ENYE + CONST_N_LETTERS_SPECIAL
     SPECIAL_LETTER = {'ñ': 26, 'á': 27, 'é': 28, 'í': 29,
                       'ó': 30, 'ú': 31, ' ': 32, '-': 33, 'ü': 34}
-
-
+    SPECIAL_LETTER_TUPLE = tuple(SPECIAL_LETTER)
+    ASCII_LOWCASE_OFFSET = 97
+    ZERO = 0
+"""
+Class defining all the nary tree for spanish words Node attributes and methods
+"""
 class TreeNode:
 
     def __init__(self, parent, letter=None):
@@ -18,12 +25,14 @@ class TreeNode:
 
     def indexLetter(self, letter):
         index = -1
-        if(letter not in tuple(Definitions.SPECIAL_LETTER)):
-            index = ord(letter) - 97
+        if(letter not in Definitions.SPECIAL_LETTER_TUPLE):
+            index = ord(letter) - Definitions.ASCII_LOWCASE_OFFSET
         else:
             index = Definitions.SPECIAL_LETTER[letter]
         return index
-
+    """
+    Insert a node in the tree if it does not exist, if it exist position the pointer to the existing
+    """
     def insertNode(self, word):
         if(len(word) > 0):
             letter = word[0]
@@ -41,7 +50,7 @@ class TreeNode:
     def searchChildNode(self, word):
         returnvalue = self
         lengthW = len(word)
-        if(lengthW > 0):
+        if(lengthW > Definitions.ZERO):
             letter = word[0]
             word = word[1:]
             index = self.indexLetter(letter)
