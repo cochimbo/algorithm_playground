@@ -1,9 +1,12 @@
 from TreeNode import TreeNode
 from TreeNary import TreeNary
 import time
+import pathlib
+import os
 
 def main():
     tree = TreeNary()
+    os.chdir(pathlib.Path(__file__).parent.resolve())
     f = open("palabras_espanyol.txt", "r", encoding="utf8")
     start = time.process_time()
     for x in f:
