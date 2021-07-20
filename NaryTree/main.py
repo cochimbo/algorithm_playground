@@ -10,6 +10,7 @@ def main():
     start = time.process_time()
     for x in f:
         tree.insertWord(x.rstrip().strip())
+    f.close()
     inCons = ""
     print("Arbol cargado en " + str(time.process_time() - start) + " segundos")
     while (True):
