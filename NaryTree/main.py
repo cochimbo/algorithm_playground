@@ -3,6 +3,8 @@ import time
 import pathlib
 import os
 
+DECIMALS_TIME = 5
+
 def main():
     tree = TreeNary()
     os.chdir(pathlib.Path(__file__).parent.resolve())
@@ -12,7 +14,7 @@ def main():
         tree.insertWord(x.rstrip().strip())
     f.close()
     inCons = ""
-    print("Arbol cargado en " + str(time.process_time() - start) + " segundos")
+    print(f"Arbol cargado en {round(time.process_time() - start, DECIMALS_TIME)} segundos")
     while (True):
         print("Introduzca texto para ver palabras con dicha precedencia (teclee exit para salir)")
         inCons = input()
@@ -23,12 +25,12 @@ def main():
             node.getAllLeafs(inArray, inCons)
             if(inCons == "exit"):
                 break
-            timesearch = str(time.process_time() - start)
-            print("Palabras precedidas de " + inCons + " : ")
+            timesearch = time.process_time() - start
+            print(f"Palabras coincidentes y/o precedidas de {inCons} : ")
             inArray.sort()
             for x in inArray:
                 print(x)
-            print("Busqueda de " + str(len(inArray)) + " elementos en " + timesearch + " segundos")
+            print(f"Busqueda de {str(len(inArray))} elementos en {round(timesearch, DECIMALS_TIME)} segundos")
         except Exception as e:
             print(e)
 if __name__ == "__main__":

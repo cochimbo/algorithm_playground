@@ -22,7 +22,7 @@ class TreeNode:
         self.letter = letter
         self.children = [None] * Definitions.CONST_N_LETTERS_CAST
         self.children = [None for _ in range(Definitions.CONST_N_LETTERS_CAST)]
-        self.leaf = False
+        self.wordleaf = False
     
     def indexLetter(self, letter):
         index = -1
@@ -46,7 +46,7 @@ class TreeNode:
             else:
                 nextNode.insertNode(word)
         else:
-            self.leaf = True
+            self.wordleaf = True
     """
     Returns the terminal node corresponding to a certain word, exception if not found
     """
@@ -67,10 +67,10 @@ class TreeNode:
     Returns all the leafs hanging from a heading string
     """
     def getAllLeafs(self, inArray, word):
-        if(self.isLeaf()):
+        if(self.isTerminalLeaf()):
             inArray.append(word)
         else:
-            if(self.leaf):
+            if(self.wordleaf):
                 inArray.append(word)
             for i in range(Definitions.CONST_N_LETTERS_CAST):
                 if(self.children[i] != None):
@@ -78,7 +78,7 @@ class TreeNode:
     """
     Returns if a node is a leaf (considering leaf a Node with no children)
     """
-    def isLeaf(self):
+    def isTerminalLeaf(self):
         isLeaf = True
         for i in range(Definitions.CONST_N_LETTERS_CAST):
             if(self.children[i] != None):
