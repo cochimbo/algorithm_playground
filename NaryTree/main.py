@@ -26,7 +26,7 @@ def main():
             if(inCons == "exit"):
                 break
             timesearch = time.process_time() - start
-            print("Palabras coincidentes y/o precedidas de %s : ".format(inCons))
+            print("Palabras coincidentes y/o precedidas de {0} : ".format(inCons))
             inArray.sort()
             for x in inArray:
                 print(x)
