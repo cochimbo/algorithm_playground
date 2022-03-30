@@ -14,7 +14,7 @@ def main():
         tree.insertWord(x.rstrip().strip())
     f.close()
     inCons = ""
-    print("Arbol cargado en %d  segundos".format(round(time.process_time() - start, DECIMALS_TIME)))
+    print("Arbol cargado en {:.4f} segundos".format(round(time.process_time() - start, DECIMALS_TIME)))
     while (inCons != "exit"):
         print("Introduzca texto para ver palabras con dicha precedencia (teclee exit para salir)")
         inCons = input()
@@ -30,7 +30,7 @@ def main():
             inArray.sort()
             for x in inArray:
                 print(x)
-            print(f"Busqueda de {str(len(inArray))} elementos en {round(timesearch, DECIMALS_TIME)} segundos")
+            print("Busqueda de {:d} elementos en {:.4f} segundos".format(len(inArray), round(timesearch, DECIMALS_TIME)))
         except Exception as e:
             print(e)
 if __name__ == "__main__":
