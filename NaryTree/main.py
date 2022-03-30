@@ -14,8 +14,8 @@ def main():
         tree.insertWord(x.rstrip().strip())
     f.close()
     inCons = ""
-    print(f"Arbol cargado en {round(time.process_time() - start, DECIMALS_TIME)} segundos")
-    while (True):
+    print("Arbol cargado en %d  segundos".format(round(time.process_time() - start, DECIMALS_TIME)))
+    while (inCons != "exit"):
         print("Introduzca texto para ver palabras con dicha precedencia (teclee exit para salir)")
         inCons = input()
         start = time.process_time()
@@ -26,7 +26,7 @@ def main():
             if(inCons == "exit"):
                 break
             timesearch = time.process_time() - start
-            print(f"Palabras coincidentes y/o precedidas de {inCons} : ")
+            print("Palabras coincidentes y/o precedidas de %s : ".format(inCons))
             inArray.sort()
             for x in inArray:
                 print(x)
